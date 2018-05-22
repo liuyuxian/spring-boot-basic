@@ -9,7 +9,7 @@ public class VersionController {
 
     private int major = 1;
     private int minor = 3;
-    private int patch = 0;
+    private int patch = 9;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getVersion() {
