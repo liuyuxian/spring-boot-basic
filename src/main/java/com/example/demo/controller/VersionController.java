@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/version")
 public class VersionController {
 
-    private int major = 1;
-    private int minor = 3;
-    private int patch = 9;
+    private int major = 2;
+    private int minor = 0;
+    private int patch = 0;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getVersion() {
