@@ -43,6 +43,14 @@ pipeline {
             }
         }
 
+        stage('Deploy Test') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: "training_pem", keyFileVariable: 'keyfile')]) {
+                    sh "ssh -i $keyfile ubuntu@172.31.12.139 'wget http://172.31.12.139:8899/version'"
+                }
+            }
+        }
+
     }
 
 }
