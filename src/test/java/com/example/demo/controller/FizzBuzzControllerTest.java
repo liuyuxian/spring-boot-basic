@@ -1,16 +1,23 @@
-package com.example.demo.domain;
+package com.example.demo.controller;
 
 import com.example.demo.controller.FizzBuzzController;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FizzBuzzTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class FizzBuzzControllerTest {
     FizzBuzzController fb;
     @Before
     public void before(){
         fb=new FizzBuzzController();
+        System.out.println("Test start!");
     }
 
     @Test
@@ -43,5 +50,9 @@ public class FizzBuzzTests {
         assertThat(result).isEqualTo("Unsupport 0!");
     }
 
+    @After
+    public void after(){
+        System.out.println("Test end!");
+    }
 
 }
