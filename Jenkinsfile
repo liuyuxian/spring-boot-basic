@@ -39,14 +39,17 @@ pipeline {
                     sh "ssh -i $keyfile ubuntu@172.31.12.139 'ls /home/ubuntu/works/$NameSpace'"
                     sh "ssh -i $keyfile ubuntu@172.31.12.139 'kill -9 \$(lsof -t -i:8899) 2>&1 &'"
                     sh "ssh -i $keyfile ubuntu@172.31.12.139 'nohup java -jar -Dserver.port=8899 /home/ubuntu/works/$NameSpace/demo.jar > demo.log 2>&1 &'"
+
                 }
             }
         }
 
+        //curl
         stage('Deploy Test') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: "training_pem", keyFileVariable: 'keyfile')]) {
-                    sh "ssh -i $keyfile ubuntu@172.31.12.139 'wget http://ec2-52-80-133-153.cn-north-1.compute.amazonaws.com.cn:8899/version'"
+                    sh "sleep 10"
+                    sh "curl http://ec2-52-80-133-153.cn-north-1.compute.amazonaws.com.cn:8899/version"
                 }
             }
         }
