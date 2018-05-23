@@ -14,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class FizzBuzzControllerTest {
     FizzBuzzController fb;
+
+
     @Before
     public void before(){
         fb=new FizzBuzzController();
